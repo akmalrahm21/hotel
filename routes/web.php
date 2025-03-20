@@ -17,8 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+use App\Http\Controllers\Admin\HotelController;
+
 Route::prefix('admin')->group(function () {
-    Route::resource('hotels', App\Http\Controllers\Admin\HotelController::class);
+    Route::resource('hotels', HotelController::class);
 });
+
 Route::get('hotels/{id}', [HotelController::class, 'show'])->name('hotels.show');
 Route::get('hotels/{id}/edit', [HotelController::class, 'edit'])->name('hotels.edit');
